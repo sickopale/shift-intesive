@@ -7,11 +7,10 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @ToString
-@EqualsAndHashCode(exclude = "id")
 public class Department {
 
-    Long id;
+    private Long id;
 
-    String name;
+    private String name;
 
 }

@@ -8,17 +8,18 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @ToString
-@EqualsAndHashCode(exclude = "id")
 public class Employee {
 
-    Long id;
+    private Long id;
 
-    String name;
+    private String name;
 
-    Double salary;
+    private Double salary;
+    // не было времени разбираться как сюда сам департамент а не строку засунуть(
+    // может быть в сервис работников
+    // тогда не пришлось бы инжектить департамент сервис и все было бы вообще красиво
+    private String department;
 
-    String department;
-
-    Boolean manager;
+    private Boolean isManager;
 
 }

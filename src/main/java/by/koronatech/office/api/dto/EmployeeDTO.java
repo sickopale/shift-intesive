@@ -10,11 +10,11 @@ import lombok.*;
 @EqualsAndHashCode
 public class EmployeeDTO {
 
-    String name;
+    private String name;
 
-    Double salary;
+    private Double salary;
 
-    String department;
+    private String department;
 
-    Boolean manager;
+    private Boolean isManager;
 }

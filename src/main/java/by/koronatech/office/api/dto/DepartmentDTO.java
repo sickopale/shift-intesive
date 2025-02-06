@@ -9,6 +9,6 @@ import lombok.*;
 @EqualsAndHashCode
 public class DepartmentDTO {
 
-    String name;
+    private String name;
 
 }
