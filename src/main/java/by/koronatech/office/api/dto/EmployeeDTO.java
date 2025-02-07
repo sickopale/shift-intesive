@@ -1,15 +1,14 @@
 package by.koronatech.office.api.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.EqualsAndHashCode;
+import by.koronatech.office.core.entity.department.Department;
+import lombok.*;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @Builder
 @EqualsAndHashCode
+@ToString
 public class EmployeeDTO {
 
     private Long id;
