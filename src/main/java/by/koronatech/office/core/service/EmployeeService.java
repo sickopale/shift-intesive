@@ -6,13 +6,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface EmployeeService {
-    public Page<Employee> getEmployeesByDepartmentId(long id, Pageable pageable);
 
-    public EmployeeDTO promoteToManager(long id);
+    Page<EmployeeDTO> getByDepartment(long id, Pageable pageable);
+    EmployeeDTO promoteToManager(long id);
 
-    public EmployeeDTO updateEmployee(long id, EmployeeDTO employeeDTO);
+    EmployeeDTO updateEmployee(long id, EmployeeDTO employeeDTO);
 
-    public EmployeeDTO createEmployee(EmployeeDTO employeeDTO);
+    EmployeeDTO createEmployee(EmployeeDTO employeeDTO);
 
-    public void deleteEmployeeById(long id);
+    void deleteEmployeeById(long id);
 }

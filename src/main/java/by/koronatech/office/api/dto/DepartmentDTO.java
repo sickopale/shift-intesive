@@ -1,6 +1,11 @@
 package by.koronatech.office.api.dto;
 
-import lombok.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
 
 @Getter
 @Setter
@@ -8,6 +13,8 @@ import lombok.*;
 @Builder
 @EqualsAndHashCode
 public class DepartmentDTO {
+
+    private Long id;
 
     private String name;
 
