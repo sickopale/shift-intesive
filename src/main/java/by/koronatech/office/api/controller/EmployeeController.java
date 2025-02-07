@@ -19,33 +19,39 @@ public class EmployeeController {
 
     private final EmployeeService employeeService;
 
-    @GetMapping("/{departmentId}")
-    public ResponseEntity<List<EmployeeDTO>> getEmployeesInDepartment(
+    private static final int DEFAULT_PAGE_SIZE = 5;
+    private static final int DEFAULT_PAGE_NUMBER = 0;
+    private static final String DEFAULT_SORT_FIELD = "name";
+
+    @GetMapping("/departments/{departmentId}")
+    public List<EmployeeDTO> getEmployeesInDepartment(
             @PathVariable long departmentId,
-            @PageableDefault(size = 5,page = 0,sort = "name") Pageable pageable
+            @PageableDefault(size = DEFAULT_PAGE_SIZE, page = DEFAULT_PAGE_NUMBER, sort = DEFAULT_SORT_FIELD) Pageable pageable
     ) {
-        return ResponseEntity.ok(employeeService.getByDepartment(departmentId, pageable).getContent());
+        return employeeService.getByDepartment(departmentId, pageable).getContent();
     }
 
     @PostMapping()
-    public ResponseEntity<EmployeeDTO> createEmployee(@RequestBody EmployeeDTO employeeDTO) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(employeeService.createEmployee(employeeDTO));
+    @ResponseStatus(HttpStatus.CREATED)
+    public EmployeeDTO createEmployee(@RequestBody EmployeeDTO employeeDTO) {
+        return employeeService.createEmployee(employeeDTO);
     }
 
     @PatchMapping("/promote/{employeeId}")
-    public ResponseEntity<EmployeeDTO> promoteEmployeeToManager(@PathVariable long employeeId) {
-        return ResponseEntity.status(HttpStatus.OK).body(employeeService.promoteToManager(employeeId));
+    public EmployeeDTO promoteEmployeeToManager(@PathVariable long employeeId) {
+        return employeeService.promoteToManager(employeeId);
     }
 
     @PatchMapping("/{employeeId}")
-    public ResponseEntity<EmployeeDTO> updateEmployee(@PathVariable long employeeId, @RequestBody EmployeeDTO employeeDTO) {
-        return ResponseEntity.status(HttpStatus.OK).body(employeeService.updateEmployee(employeeId, employeeDTO));
+    public EmployeeDTO updateEmployee(@PathVariable long employeeId, @RequestBody EmployeeDTO employeeDTO) {
+        return employeeService.updateEmployee(employeeId, employeeDTO);
     }
 
     @DeleteMapping("/{employeeId}")
-    public ResponseEntity<String> deleteEmployee(@PathVariable long employeeId) {
+    public String deleteEmployee(@PathVariable long employeeId) {
         employeeService.deleteEmployeeById(employeeId);
-        return ResponseEntity.ok("Employee has been deleted");
+        return "Employee has been deleted";
     }
 }
+
 
