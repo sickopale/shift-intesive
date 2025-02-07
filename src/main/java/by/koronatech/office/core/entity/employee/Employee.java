@@ -1,24 +1,30 @@
 package by.koronatech.office.core.entity.employee;
 
 import by.koronatech.office.core.entity.department.Department;
+import jakarta.persistence.*;
 import lombok.*;
+
+
 
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
-@ToString
-public class Employee {
+@Entity
 
+public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
     private Double salary;
-    // не было времени разбираться как сюда сам департамент а не строку засунуть(
-    // может быть в сервис работников
-    // тогда не пришлось бы инжектить департамент сервис и все было бы вообще красиво
-    private String department;
+
+    @ManyToOne
+    @JoinColumn(name = "department_id", nullable = false)
+    private Department department;
 
     private Boolean isManager;
 

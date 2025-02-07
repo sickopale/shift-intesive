@@ -8,13 +8,16 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @EqualsAndHashCode
+@ToString
 public class EmployeeDTO {
+
+    private Long id;
 
     private String name;
 
     private Double salary;
 
-    private String department;
+    private String departmentName;
 
     private Boolean isManager;
 }

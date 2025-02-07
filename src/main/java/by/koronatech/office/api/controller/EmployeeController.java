@@ -19,16 +19,14 @@ public class EmployeeController {
 
     private final EmployeeService employeeService;
 
-    //Можешь объяснить, почему лучше просто что-то отдавать без ResponseEntity, ничего не исправлял пока
-
-    //здесь по депаратамент id, потому что в сущности не менял имя на сам департамент, можно было просто по имени
     @GetMapping("/{departmentId}")
-    public ResponseEntity<List<Employee>> getEmployeesInDepartment(
-            @PathVariable Long departmentId,
+    public ResponseEntity<List<EmployeeDTO>> getEmployeesInDepartment(
+            @PathVariable long departmentId,
             @PageableDefault(size = 5,page = 0,sort = "name") Pageable pageable
     ) {
-        return ResponseEntity.ok(employeeService.getEmployeesByDepartmentId(departmentId, pageable).getContent());
+        return ResponseEntity.ok(employeeService.getByDepartment(departmentId, pageable).getContent());
     }
+
     @PostMapping()
     public ResponseEntity<EmployeeDTO> createEmployee(@RequestBody EmployeeDTO employeeDTO) {
         return ResponseEntity.status(HttpStatus.CREATED).body(employeeService.createEmployee(employeeDTO));

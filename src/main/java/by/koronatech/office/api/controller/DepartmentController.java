@@ -1,6 +1,6 @@
 package by.koronatech.office.api.controller;
 
-import by.koronatech.office.core.entity.department.Department;
+import by.koronatech.office.api.dto.DepartmentDTO;
 import by.koronatech.office.core.service.DepartmentService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -19,8 +19,9 @@ public class DepartmentController {
 
     private final DepartmentService departmentService;
     @GetMapping()
-    public ResponseEntity<List<Department>> getDepartments(
+    public ResponseEntity<List<DepartmentDTO>> getDepartments(
             @PageableDefault(size = 5,page = 0,sort = "name") Pageable pageable) {
         return ResponseEntity.ok(departmentService.getDepartments(pageable).getContent());
     }
+
 }
