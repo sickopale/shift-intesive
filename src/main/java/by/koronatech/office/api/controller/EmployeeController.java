@@ -1,13 +1,11 @@
 package by.koronatech.office.api.controller;
 
 import by.koronatech.office.api.dto.EmployeeDTO;
-import by.koronatech.office.core.entity.employee.Employee;
 import by.koronatech.office.core.service.EmployeeService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
